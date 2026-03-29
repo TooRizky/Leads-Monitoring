@@ -68,8 +68,8 @@ export default function LeadTable({
   const sorted = useMemo(() => {
     if (!sortKey || !sortDir) return data
     return [...data].sort((a, b) => {
-      const av = (a as Record<string, unknown>)[sortKey] ?? ""
-      const bv = (b as Record<string, unknown>)[sortKey] ?? ""
+      const av = (a as unknown as Record<string, unknown>)[sortKey] ?? ""
+      const bv = (b as unknown as Record<string, unknown>)[sortKey] ?? ""
       if (typeof av === "number" && typeof bv === "number") {
         return sortDir === "asc" ? av - bv : bv - av
       }
@@ -139,7 +139,7 @@ export default function LeadTable({
               >
                 {/* CIF */}
                 <TableCell className="font-mono text-[10px] text-slate-400 whitespace-nowrap">
-                  {(item as Record<string, unknown>).cif as string || "—"}
+                  {(item as unknown as Record<string, unknown>).cif as string || "—"}
                 </TableCell>
 
                 {/* Nama */}
@@ -261,7 +261,7 @@ export default function LeadTable({
                 {/* No Rek (Ekstensifikasi only) */}
                 {tabType === "extensification" && (
                   <TableCell className="font-mono text-[10px] text-slate-400">
-                    {(item as Record<string, unknown>).no_rek as string || "—"}
+                    {(item as unknown as Record<string, unknown>).no_rek as string || "—"}
                   </TableCell>
                 )}
 

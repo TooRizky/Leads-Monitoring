@@ -27,7 +27,7 @@ const EMPTY_FILTERS: FilterState = {
 function applyFilters(data: LeadBase[], filters: FilterState): LeadBase[] {
   return data.filter((item) => {
     const s = filters.search.toLowerCase()
-    const itemRecord = item as Record<string, unknown>
+    const itemRecord = item as unknown as Record<string, unknown>
     const matchSearch =
       !s ||
       item.nama_perusahaan?.toLowerCase().includes(s) ||

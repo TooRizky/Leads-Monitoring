@@ -118,7 +118,9 @@ export default function PhoneBookPanel({
 
   const picLogs = changeLogs.filter((l) => l.field_name === "pic")
 
-  const leadRecord = lead as Record<string, unknown>
+  const leadRecord = lead as unknown as Record<string, unknown>
+  const cifStr = leadRecord.cif ? String(leadRecord.cif) : ""
+  const noRekStr = leadRecord.no_rek ? String(leadRecord.no_rek) : ""
 
   return (
     <>
@@ -170,14 +172,14 @@ export default function PhoneBookPanel({
           </h2>
 
           <div className="flex flex-wrap gap-2">
-            {leadRecord.cif && (
+            {cifStr && (
               <span className="text-[10px] font-mono bg-white/15 px-2.5 py-1 rounded-lg">
-                CIF: {leadRecord.cif as string}
+                CIF: {cifStr}
               </span>
             )}
-            {leadRecord.no_rek && (
+            {noRekStr && (
               <span className="text-[10px] font-mono bg-white/15 px-2.5 py-1 rounded-lg">
-                No Rek: {leadRecord.no_rek as string}
+                No Rek: {noRekStr}
               </span>
             )}
             <Badge variant={hasilVariant} className="text-[9px]">
