@@ -10,6 +10,7 @@ interface HeaderProps {
   extensificationData?: LeadEktensifikasi[]
   onRefresh?: () => void
   isRefreshing?: boolean
+  logoSrc?: string
 }
 
 export default function DashboardHeader({
@@ -17,6 +18,7 @@ export default function DashboardHeader({
   extensificationData = [],
   onRefresh,
   isRefreshing = false,
+  logoSrc,
 }: HeaderProps) {
   const [time, setTime] = useState("")
   const [date, setDate] = useState("")
@@ -55,6 +57,17 @@ export default function DashboardHeader({
         <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#003f7d] flex items-center justify-center shadow-lg shadow-[#003f7d]/25">
           <TrendingUp size={22} className="text-[#f5a623]" strokeWidth={2.5} />
         </div>
+
+        {/* Logo di samping icon */}
+        {logoSrc && (
+          <div className="flex-shrink-0 h-12 flex items-center">
+            <img
+              src={logoSrc}
+              alt="Logo"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+        )}
 
         <div>
           <div className="flex items-center gap-2 mb-0.5">

@@ -1,6 +1,8 @@
 import { useEffect, useState, useMemo, useCallback } from "react"
 import { supabase } from "@/lib/supabase"
 import DashboardHeader from "@/components/dashboardHeader"
+// Import logo dari folder assets — taruh file gambar Anda di src/assets/logo.png
+import logoImage from "@/assets/logo.png"
 import StatsCards from "@/components/statsCards"
 import ProgressSection from "@/components/progressSection"
 import LeadTable from "@/components/leadTable"
@@ -196,6 +198,7 @@ export default function App() {
           extensificationData={extData}
           onRefresh={handleRefresh}
           isRefreshing={isRefreshing}
+          logoSrc={logoImage}
         />
 
         <StatsCards
