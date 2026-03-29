@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   MANDIRI COLOR PALETTE
+   ============================================= */
+:root {
+  --mandiri-blue: #003f7d;
+  --mandiri-blue-dark: #002d5c;
+  --mandiri-blue-mid: #005299;
+  --mandiri-blue-light: #e8f0f9;
+  --mandiri-yellow: #f5a623;
+  --mandiri-yellow-dark: #e8961e;
+  --mandiri-yellow-light: #fef3dc;
+  --mandiri-green: #00a651;
+  --mandiri-green-light: #e6f7ee;
+  --mandiri-red: #dc2626;
+  --mandiri-red-light: #fef2f2;
+  --bg-page: #f0f5fb;
+  --bg-card: #ffffff;
+  --text-primary: #1a2642;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+}
+
+/* =============================================
+   BASE STYLES
+   ============================================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================================
+   SCROLLBAR STYLE
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =============================================
+   MANDIRI UTILITY CLASSES
+   ============================================= */
+@layer utilities {
+  .bg-mandiri-blue       { background-color: var(--mandiri-blue); }
+  .bg-mandiri-blue-mid   { background-color: var(--mandiri-blue-mid); }
+  .bg-mandiri-blue-light { background-color: var(--mandiri-blue-light); }
+  .bg-mandiri-yellow     { background-color: var(--mandiri-yellow); }
+  .bg-mandiri-yellow-light { background-color: var(--mandiri-yellow-light); }
+  .bg-mandiri-green      { background-color: var(--mandiri-green); }
+  .bg-mandiri-green-light { background-color: var(--mandiri-green-light); }
+
+  .text-mandiri-blue     { color: var(--mandiri-blue); }
+  .text-mandiri-yellow   { color: var(--mandiri-yellow); }
+  .text-mandiri-green    { color: var(--mandiri-green); }
+
+  .border-mandiri-blue   { border-color: var(--mandiri-blue); }
+  .border-mandiri-yellow { border-color: var(--mandiri-yellow); }
+}
+
+/* =============================================
+   PROGRESS BAR ANIMATION
+   ============================================= */
+.progress-bar-fill {
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.2); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* =============================================
+   TABLE ROW HOVER
+   ============================================= */
+.lead-row:hover {
+  background-color: var(--mandiri-blue-light);
+}
+
+/* =============================================
+   CARD ELEVATION
+   ============================================= */
+.card-mandiri {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px -2px rgba(0, 63, 125, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0, 63, 125, 0.07);
+}
+
+/* =============================================
+   FORM INPUTS
+   ============================================= */
+.input-mandiri {
+  width: 100%;
+  padding: 10px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-mandiri:focus {
+  border-color: var(--mandiri-blue);
+  box-shadow: 0 0 0 3px rgba(0, 63, 125, 0.12);
+}
+
+/* =============================================
+   MODAL OVERLAY
+   ============================================= */
+.modal-overlay {
+  animation: fadeOverlay 0.2s ease-out;
+}
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.modal-content {
+  animation: slideModal 0.25s ease-out;
+}
+@keyframes slideModal {
+  from { opacity: 0; transform: scale(0.96) translateY(-10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* =============================================
+   PHONE BOOK CONTACT CARD
+   ============================================= */
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.contact-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
